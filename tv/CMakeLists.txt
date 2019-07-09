@@ -1,0 +1,29 @@
+cmake_minimum_required(VERSION 2.8.11)
+
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
+
+set(TV_HDR
+	${CMAKE_CURRENT_SOURCE_DIR}/deblur.h
+	${CMAKE_CURRENT_SOURCE_DIR}/denoise.h
+	${CMAKE_CURRENT_SOURCE_DIR}/inpaint.h
+	${CMAKE_CURRENT_SOURCE_DIR}/kernels.h
+	${CMAKE_CURRENT_SOURCE_DIR}/tv.h
+	CACHE INTERNAL "" FORCE)
+set(${PROJECT_NAME}_HDR
+	${${PROJECT_NAME}_HDR}
+	${TV_HDR}
+	PARENT_SCOPE)
+
+# Add Source
+# -------------------------
+set(TV_SRC
+	${CMAKE_CURRENT_SOURCE_DIR}/deblur.cu
+	${CMAKE_CURRENT_SOURCE_DIR}/denoise.cu
+	${CMAKE_CURRENT_SOURCE_DIR}/inpaint.cu
+	${CMAKE_CURRENT_SOURCE_DIR}/kernels.cu
+	CACHE INTERNAL "" FORCE)
+set(${PROJECT_NAME}_SRC
+	${${PROJECT_NAME}_SRC}
+	${TV_SRC}
+	PARENT_SCOPE)
+
